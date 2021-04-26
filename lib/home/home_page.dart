@@ -1,3 +1,4 @@
+import 'package:dev_quiz_nlw/challenge/challenge_page.dart';
 import 'package:dev_quiz_nlw/home/home_controller.dart';
 import 'package:dev_quiz_nlw/home/home_state.dart';
 import 'package:dev_quiz_nlw/home/widgets/app_bar/app_bar_widget.dart';
@@ -77,6 +78,16 @@ class _HomePageState extends State<HomePage> {
                 children: _controller.quizzes!
                     .map((quiz) => QuizCardWidget(
                           quiz: quiz,
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ChallengePage(
+                                        questions: quiz.questions,
+                                        title: quiz.title,
+                                      )),
+                            );
+                          },
                         ))
                     .toList(),
               ),

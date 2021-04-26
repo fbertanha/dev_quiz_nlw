@@ -3,6 +3,12 @@ import 'package:dev_quiz_nlw/shared/widgets/progress_indicator/linear_progress_i
 import 'package:flutter/material.dart';
 
 class QuestionIndicatorWidget extends StatelessWidget {
+  final int currentPage;
+  final int totalPages;
+
+
+  QuestionIndicatorWidget({required this.currentPage, required this.totalPages});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -13,17 +19,17 @@ class QuestionIndicatorWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "Questão 04",
+                "Questão $currentPage",
                 style: AppTextStyles.body,
               ),
-              Text("de 10", style: AppTextStyles.body)
+              Text("de $totalPages", style: AppTextStyles.body)
             ],
           ),
           SizedBox(
             height: 16,
           ),
           LinearProgressIndicatorWidget(
-            value: 0.92,
+            value: currentPage / totalPages,
           )
         ],
       ),
